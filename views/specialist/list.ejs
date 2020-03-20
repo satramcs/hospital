@@ -19,6 +19,14 @@
   <% } %>
 
   <div class="container">
+
+    <div class="row" style="margin-top: 40px;">
+      <div class="col-md-12">
+        <a href="../" class="btn btn-primary"> Home </a>
+        <a href="../specialist/add" class="btn btn-primary"> Add Specialist </a>
+      </div>
+    </div>
+
     <div class="row">
      <h3>Specialist List</h3>
      <table class="table">
@@ -41,7 +49,7 @@
             <td><img class="img" width="50px" src="/images/<%= data[i].specialist_image%>" /> </td>
             <td>
               <a class="btn btn-success edit" href="../specialist/edit/<%=data[i].sp_id%>">Edit</a>                       
-              <a class="btn btn-danger delete" onclick="return alert('Are You sure?')" href="../specialist/delete/<%=data[i].sp_id%>">Delete</a>                       
+              <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../specialist/delete/<%=data[i].sp_id%>">Delete</a>                       
             </td>
           </tr>
           <% }

@@ -19,6 +19,13 @@
   <% } %>
 
   <div class="container">
+    <div class="row" style="margin-top: 40px;">
+      <div class="col-md-12">
+        <a href="../" class="btn btn-primary"> Home </a>
+        <a href="../doctor/add" class="btn btn-primary"> Add Doctor </a>
+      </div>
+    </div>
+
     <div class="row">
      <h3>Doctors List</h3>
      <table class="table">
@@ -39,28 +46,28 @@
           // for(var i = 0; i< data.length; i++)
           for(i in data)
            {%>  
-          <tr>
-            <th scope="row"><%= (n++) %></th>
-            <td><%= data[i].name%></td>
-            <td><%= data[i].course%></td>
-            <td><%= data[i].subject%></td>
-            <td><img class="img" width="50px" src="/images/<%= data[i].doctor_image%>" /> </td>
-            <td>
-              <a class="btn btn-success edit" href="../doctor/edit/<%=data[i].id%>">Edit</a>                       
-              <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../doctor/delete/<%=data[i].id%>">Delete</a>                       
-            </td>
-          </tr>
-          <% }
+            <tr>
+              <th scope="row"><%= (n++) %></th>
+              <td><%= data[i].name%></td>
+              <td><%= data[i].course%></td>
+              <td><%= data[i].subject%></td>
+              <td><img class="img" width="50px" src="/images/<%= data[i].doctor_image%>" /> </td>
+              <td>
+                <a class="btn btn-success edit" href="../doctor/edit/<%=data[i].id%>">Edit</a>                       
+                <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../doctor/delete/<%=data[i].id%>">Delete</a>                       
+              </td>
+            </tr>
+            <% }
 
-        }else{ %>
-        <tr>
-          <td colspan="5">No data</td>
-        </tr>
-        <% } %>  
-      </tbody>
-    </table>
+          }else{ %>
+          <tr>
+            <td colspan="5">No data</td>
+          </tr>
+          <% } %>  
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
 </body>
 </html>

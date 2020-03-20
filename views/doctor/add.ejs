@@ -19,6 +19,13 @@
   <% } %> 
 
   <div class="container">
+
+    <div class="row" style="margin-top: 40px;">
+      <div class="col-md-12">
+        <a href="../doctor/list" class="btn btn-primary"> Doctor List </a>
+      </div>
+    </div>
+
     <div class="row">
      <h3>Add Doctor Profile</h3>
      <form action="/doctor/add" method="post" name="form" enctype="multipart/form-data">
@@ -45,7 +52,7 @@
           <label>Doctor Photo</label>
           <input type="file" name="file" class="form-control" id="file">
         </div>
-        <input type="submit" class="btn btn-primary" value="Add">
+        <input type="submit" class="btn btn-primary" value="Add Doctor">
       </form>
     </div>
   </div>

@@ -44,6 +44,8 @@ router.post('/add', [upload.single('file')], function(req, res) {
 
 						my_conn.query('INSERT INTO speciality SET ?', specialist, function(err, result) {
 							if (err) {
+								console.log(err);
+								req.flash('error', 'Unable to add doctor!');
 								res.render('specialist/add', {data:''});
 							} else {
 								req.flash('success', 'specialist added successfully!');
