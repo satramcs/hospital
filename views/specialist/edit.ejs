@@ -24,7 +24,7 @@
      <form action="/specialist/update/<%= data.sp_id %>" method="post" name="form" enctype="multipart/form-data">
       <div class="form-group">
         <label>Subject</label>
-        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" value="<%= data.subject %>">
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" value="<%= data.subject %>" required>
       </div>
 
       <div class="form-group">
@@ -33,7 +33,7 @@
 
       <div class="form-group">
         <label>Specialist Photo</label>
-        <input type="file" name="file" class="form-control" id="file">
+        <input type="file" name="file" class="form-control" id="file" accept="image/x-png,image/jpg,image/jpeg">
         <input type="hidden" name="old_file" value="<%= data.specialist_image %>">
       </div>
       <input type="submit" class="btn btn-primary" value="Update">

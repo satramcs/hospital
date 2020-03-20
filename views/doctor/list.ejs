@@ -27,7 +27,7 @@
     </div>
 
     <div class="row">
-     <h3>Doctors List</h3>
+     <h3>Doctors List </h3>
      <table class="table">
       <thead>
         <tr>
@@ -41,7 +41,7 @@
       </thead>
       <tbody>
 
-        <% if(typeof data === 'object'){
+        <% if(Object.keys(data).length){
           var n = 1;
           // for(var i = 0; i< data.length; i++)
           for(i in data)

@@ -23,11 +23,7 @@ router.get('/list', function(req, res, next) {
 					simple_array[rows[i].id] = rows[i];
 				}
 			}
-
-			for(n in simple_array){
-				console.log(simple_array[n].subject);
-			}
-
+			console.log(simple_array);
 			res.render('doctor/list', {data:simple_array});
 		}
 	});
@@ -40,7 +36,7 @@ router.get('/add', function(req, res, next) {
 		}else{
 			if(rows.length == 0){
 				req.flash('error', 'Please add atleast one specialist to map!');
-				res.redirect('/specialist/add');
+				res.redirect('/specialist/list');
 			}else{
 				res.render('doctor/add', {data:rows});
 			}

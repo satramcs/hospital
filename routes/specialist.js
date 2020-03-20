@@ -44,7 +44,6 @@ router.post('/add', [upload.single('file')], function(req, res) {
 
 						my_conn.query('INSERT INTO speciality SET ?', specialist, function(err, result) {
 							if (err) {
-								console.log(err);
 								req.flash('error', 'Unable to add doctor!');
 								res.render('specialist/add', {data:''});
 							} else {
@@ -79,7 +78,6 @@ router.get('/edit/(:id)', function(req, res, next){
 				req.flash('error', 'Specialist not found with id = ' + req.params.id)
 				res.redirect('/specialist/list')
 			}else{
-				console.log(row);
 				res.render('specialist/edit', {
 					data:row
 				});
@@ -148,17 +146,26 @@ router.get('/delete/(:id)', function(req, res, next) {
 				req.flash('error', 'Specialist not found')
 				res.redirect('/specialist/list')
 			}else{
-				console.log(row.specialist_image);
-				fs.unlinkSync(appRoot+'/public/images/'+row.specialist_image);
-				my_conn.query('DELETE FROM speciality WHERE sp_id = ' + sp_id, specialist, function(err, result) {
-					if (err) {
-						req.flash('error', err);
-						res.redirect('/specialist/list');
-					} else {
-						req.flash('success', 'Specialist deleted successfully!');
-						res.redirect('/specialist/list');
-					}
-				});
+
+				my_conn.query('SELECT count(*) as total FROM doctor_specialist WHERE specialist_id = ' + sp_id, function(err, [get_row], fields) {
+					if(err) throw err
+
+						if (get_row.total > 0) {
+							req.flash('error', 'Specialist already map to doctor');
+							res.redirect('/specialist/list');
+						}else{
+							fs.unlinkSync(appRoot+'/public/images/'+row.specialist_image);
+							my_conn.query('DELETE FROM speciality WHERE sp_id = ' + sp_id, specialist, function(err, result) {
+								if (err) {
+									req.flash('error', err);
+									res.redirect('/specialist/list');
+								} else {
+									req.flash('success', 'Specialist deleted successfully!');
+									res.redirect('/specialist/list');
+								}
+							});
+						}            
+					});
 			}            
 		});
 

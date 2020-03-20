@@ -24,12 +24,12 @@
      <form action="/doctor/update/<%= data.id %>" method="post" name="form" enctype="multipart/form-data">
       <div class="form-group">
         <label>Doctor Name</label>
-        <input type="text" class="form-control" name="name" placeholder="Doctor Name" value="<%= data.name %>">
+        <input type="text" class="form-control" name="name" placeholder="Doctor Name" value="<%= data.name %>" required>
       </div>
 
       <div class="form-group">
         <label>Doctor Qualification</label>
-        <input type="text" class="form-control" name="course" placeholder="Doctor Qualification" value="<%= data.course %>">
+        <input type="text" class="form-control" name="course" placeholder="Doctor Qualification" value="<%= data.course %>" required>
       </div>
 
       <div class="form-group">
@@ -48,7 +48,7 @@
 
       <div class="form-group">
         <label>Doctor Photo</label>
-        <input type="file" name="file" class="form-control" id="file">
+        <input type="file" name="file" class="form-control" id="file" accept="image/x-png,image/jpg,image/jpeg">
         <input type="hidden" name="old_file" value="<%= data.doctor_image %>">
       </div>
       <input type="submit" class="btn btn-primary" value="Update">

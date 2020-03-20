@@ -34,22 +34,10 @@ exports.up = function(db, callback) {
       type: 'string',
       length: 255
     },
-  }, createTimestamps);
-
-  function createTimestamps(err){
-    if(err){ callback(err); return; }
-
-    db.connection.query([
-      'ALTER TABLE doctor',
-      'ADD updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP',
-        'ON UPDATE CURRENT_TIMESTAMP,',
-      'ADD created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP',
-    ].join(' '), function(err){
-      callback(err);
-    });
-
-  }
-
+  }, function(err) {
+    if (err) return callback(err);
+    return callback();
+  });
 };
 exports.down = function(db, callback) {
   db.dropTable('doctor', callback);

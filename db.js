@@ -3,7 +3,7 @@
  	host:'localhost',
  	user:'root',
  	password:'',
- 	database:'old_hospital'
+ 	database:'hospital'
  });
  connection.connect(function(error){
  	if(!!error){
