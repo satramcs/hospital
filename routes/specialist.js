@@ -34,7 +34,8 @@ router.post('/add', [upload.single('file')], function(req, res) {
 
 				fs.rename(req.file.path, file, function(err) {
 					if (err) {
-						res.send(500);
+						req.flash('error', 'Can not upload image!');
+						res.redirect('/specialist/add');
 					} else {
 
 						var specialist = {
