@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <% if (messages.error) { %>
+  <p class="alert alert-danger mt-4"><%- messages.error %></p>
+  <% } %>
+  
+  <% if (messages.success) { %>
+  <p class="alert alert-success mt-4"><%- messages.success %></p>
+  <% } %>
+
+  <div class="container">
+    <div class="row">
+     <h3>Doctors List</h3>
+     <table class="table">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Name</th>
+          <th>Qualification</th>
+          <th>Specialists</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% if(typeof data === 'object'){
+          var n = 1;
+          // for(var i = 0; i< data.length; i++)
+          for(i in data)
+           {%>  
+          <tr>
+            <th scope="row"><%= (n++) %></th>
+            <td><%= data[i].name%></td>
+            <td><%= data[i].course%></td>
+            <td><%= data[i].subject%></td>
+            <td><img class="img" width="50px" src="/images/<%= data[i].doctor_image%>" /> </td>
+            <td>
+              <a class="btn btn-success edit" href="../doctor/edit/<%=data[i].id%>">Edit</a>                       
+              <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../doctor/delete/<%=data[i].id%>">Delete</a>                       
+            </td>
+          </tr>
+          <% }
+
+        }else{ %>
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+        <% } %>  
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

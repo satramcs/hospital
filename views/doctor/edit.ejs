@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<% if (messages.error) { %>
+  <p class="alert alert-danger mt-4"><%- messages.error %></p>
+<% } %> 
+  
+<% if (messages.success) { %>
+    <p class="alert alert-success mt-4"><%- messages.success %></p>
+<% } %> 
+
+  <div class="container">
+    <div class="row">
+     <h3>Update Doctor Profile</h3>
+     <form action="/doctor/update/<%= data.id %>" method="post" name="form" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Doctor Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Doctor Name" value="<%= data.name %>">
+      </div>
+
+      <div class="form-group">
+        <label>Doctor Qualification</label>
+        <input type="text" class="form-control" name="course" placeholder="Doctor Qualification" value="<%= data.course %>">
+      </div>
+
+      <div class="form-group">
+        <img width="100px" src="/images/<%= data.doctor_image%>" class="img-thumbnail" alt="Cinque Terre">
+      </div>
+
+      <div class="form-group">
+        <label>Doctor Specialists</label>
+        <% if(specialists.length){
+          for(var i = 0; i< specialists.length; i++) {%>
+          <div class="checkbox">
+            <label><input type="checkbox" name="specialists[]" value="<%= specialists[i].sp_id%>"  <%= (specialists[i].doctor_id == data.id) ? 'checked':'' %>  ><%= specialists[i].subject%></label>
+          </div>
+          <% } } %>  
+        </div>
+
+      <div class="form-group">
+        <label>Doctor Photo</label>
+        <input type="file" name="file" class="form-control" id="file">
+        <input type="hidden" name="old_file" value="<%= data.doctor_image %>">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Update">
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
