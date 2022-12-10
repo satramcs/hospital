@@ -10,7 +10,7 @@
     "db-migrate-mysql": "^2.1.1",
     "debug": "~2.6.9",
     "ejs": "^3.0.1",
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
     "express-validator": "^6.4.0",
